@@ -1,42 +1,111 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Logo from './Logo'
+
+const links = [
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Our Story', href: '#story' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
+]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const handler = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', handler)
+    return () => window.removeEventListener('scroll', handler)
   }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-cream shadow-sm' : 'bg-transparent'}`}>
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-heading text-2xl tracking-[0.15em] text-charcoal font-light">
-          GLOW BEAUTY
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-dark-800/90 backdrop-blur-xl border-b border-white/5 shadow-xl' : ''
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#hero">
+          <Logo size="md" />
         </a>
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-10">
-          <a href="#about" className="section-tag hover:text-olive transition-colors">About</a>
-          <a href="#services" className="section-tag hover:text-olive transition-colors">Services</a>
-          <a href="#book" className="section-tag bg-olive text-cream px-5 py-2 hover:bg-olive-dark transition-colors">Book Now</a>
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
+            <motion.a
+              key={link.href}
+              href={link.href}
+              className="text-slate-400 hover:text-white text-sm font-medium transition-colors"
+              whileHover={{ y: -1 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+            >
+              {link.label}
+            </motion.a>
+          ))}
         </div>
-        {/* Mobile hamburger */}
-        <button className="md:hidden flex flex-col gap-1.5" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-          <span className={`w-6 h-px bg-charcoal transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`w-6 h-px bg-charcoal transition-all ${menuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`w-6 h-px bg-charcoal transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+
+        <motion.a
+          href="#contact"
+          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-600 hover:bg-brand-500 text-white text-sm font-semibold transition-colors"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+        >
+          Get a Free Website
+        </motion.a>
+
+        {/* Mobile burger */}
+        <button
+          className="md:hidden text-white p-1"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {menuOpen ? (
+              <path d="M18 6L6 18M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
         </button>
       </div>
+
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-cream px-6 py-6 flex flex-col gap-6 border-t border-sage-light">
-          <a href="#about" className="section-tag" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="#services" className="section-tag" onClick={() => setMenuOpen(false)}>Services</a>
-          <a href="#book" className="section-tag bg-olive text-cream px-5 py-2 text-center" onClick={() => setMenuOpen(false)}>Book Now</a>
-        </div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden bg-dark-800/95 backdrop-blur-xl border-b border-white/5"
+          >
+            <div className="px-6 py-4 flex flex-col gap-4">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-slate-300 hover:text-white font-medium py-1"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="#contact"
+                className="inline-flex justify-center px-5 py-2.5 rounded-full bg-brand-600 text-white text-sm font-semibold mt-2"
+                onClick={() => setMenuOpen(false)}
+              >
+                Get a Free Website
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   )
 }
