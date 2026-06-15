@@ -113,7 +113,7 @@ export default function Services() {
           <MenuItem
             name="The Oil Slick Beta Oil Peel"
             price="R800"
-            description="The deep cleanse — a blend of 5% lactic acid + 5% salicylic acid that says \"bye-bye to blocked pores and oily villains.\""
+            description={'The deep cleanse — a blend of 5% lactic acid + 5% salicylic acid that says "bye-bye to blocked pores and oily villains."'}
           />
           <MenuItem
             name="The Sneaky Lunch Break 1 Layer 6% TCA Peel"
