@@ -32,7 +32,7 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* Right: decorative card */}
+        {/* Right: Paige's photo */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -42,30 +42,17 @@ export default function About() {
           className="flex justify-center md:justify-end"
         >
           <div className="relative w-full max-w-sm">
-            {/* Offset border */}
             <div className="absolute inset-0 border border-olive/30 translate-x-4 translate-y-4"></div>
-            <div className="relative bg-cream p-10 border border-olive/20">
-              <p className="section-tag mb-6 text-center">✦ The Glow Standard ✦</p>
-              <blockquote className="font-heading text-2xl italic text-charcoal/80 text-center leading-relaxed mb-8">
-                "Every client deserves to leave feeling radiant — inside and out."
-              </blockquote>
-              <div className="w-8 h-px bg-olive/40 mx-auto mb-8"></div>
-              <ul className="space-y-4">
-                {[
-                  { label: 'Precision', desc: 'Meticulous technique in every treatment' },
-                  { label: 'Passion', desc: 'Genuine love for the art of beauty' },
-                  { label: 'Personalisation', desc: 'Every client, every skin — unique' },
-                  { label: 'Glow', desc: 'Results you can feel and see' },
-                ].map(item => (
-                  <li key={item.label} className="flex gap-4 items-start">
-                    <span className="text-olive mt-0.5">✦</span>
-                    <div>
-                      <span className="section-tag text-charcoal block mb-0.5">{item.label}</span>
-                      <span className="text-charcoal/50 text-xs">{item.desc}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative overflow-hidden border border-olive/20">
+              <img
+                src="/images/paige.jpg"
+                alt="Paige Clemen — Glow Beauty"
+                className="w-full h-[480px] object-cover object-top"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/60 to-transparent px-6 py-5">
+                <p className="font-heading text-xl text-white font-light">Paige Clemen</p>
+                <p className="text-white/70 text-xs tracking-widest uppercase mt-1">Beauty Therapist · Melkbosstrand</p>
+              </div>
             </div>
           </div>
         </motion.div>

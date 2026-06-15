@@ -1,123 +1,97 @@
 import { motion } from 'framer-motion'
-import { FadeUp, StaggerContainer, StaggerItem } from '../components/AnimatedSection'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 0) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay: i * 0.15 }
+  })
+}
 
 const testimonials = [
   {
-    name: 'Thabo Mokoena',
-    role: 'Owner, TM Electrical',
-    avatar: 'T',
-    color: 'from-orange-500 to-amber-400',
-    stars: 5,
-    quote:
-      "I was sceptical at first but within a week of my site going live, my phone started ringing. I got 3 new jobs in the first two weeks just from Google searches. Best investment I ever made for my business.",
+    quote: "Paige is an absolute artist. My skin has never looked better — the peel she recommended changed everything.",
+    name: "Sarah M.",
+    service: "Drama Queen Peel",
   },
   {
-    name: 'Lerato Dlamini',
-    role: 'Hair & Beauty Studio',
-    avatar: 'L',
-    color: 'from-pink-500 to-rose-400',
-    stars: 5,
-    quote:
-      "JF made the whole process so easy. I just told him what I wanted, and he handled everything. My clients love the new website and my bookings have doubled since launch.",
+    quote: "I drive all the way from Cape Town just for Paige's nail work. Worth every kilometre.",
+    name: "Kezia L.",
+    service: "Long Lasting Gel",
   },
   {
-    name: 'Christo van Wyk',
-    role: 'Van Wyk Plumbing',
-    avatar: 'C',
-    color: 'from-blue-500 to-cyan-400',
-    stars: 5,
-    quote:
-      "Professional, fast, and affordable. I had no idea a website could make such a difference. Customers actually call me saying they found me on Google. Never had that before.",
-  },
-  {
-    name: 'Nomsa Khumalo',
-    role: 'Catering & Events',
-    avatar: 'N',
-    color: 'from-purple-500 to-violet-400',
-    stars: 5,
-    quote:
-      "Buildrr built my site in under a week. It looks amazing on phones — which is where most of my clients find me. I finally feel like a proper business.",
+    quote: "The most relaxing and results-driven facial I've ever had. I left genuinely glowing.",
+    name: "Monique R.",
+    service: "Fountain of Youth Facial",
   },
 ]
 
-function Stars({ count = 5 }) {
-  return (
-    <div className="flex gap-1">
-      {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#fbbf24">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      ))}
-    </div>
-  )
-}
-
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-32 relative overflow-hidden">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-brand-600/8 blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6">
-        <FadeUp className="text-center mb-16">
-          <span className="inline-block text-brand-400 text-sm font-semibold tracking-widest uppercase mb-4">
-            Client Wins
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Real results from{' '}
-            <span className="gradient-text">real businesses</span>
+    <section id="testimonials" className="bg-sage-light py-24 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <p className="section-tag mb-4">✦ Client Love ✦</p>
+          <h2 className="font-heading text-5xl md:text-6xl font-light text-charcoal">
+            What They&apos;re <em>Saying</em>
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Don't take our word for it — hear from clients who were exactly where you are now.
-          </p>
-        </FadeUp>
+          <div className="thin-line mt-6"></div>
+        </motion.div>
 
-        <StaggerContainer className="grid md:grid-cols-2 gap-6">
-          {testimonials.map((t, i) => (
-            <StaggerItem key={i}>
+        <div className="grid md:grid-cols-2 gap-10 items-start">
+          {/* Nails photo */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="absolute inset-0 border border-olive/25 translate-x-3 translate-y-3 pointer-events-none"></div>
+            <img
+              src="/images/nails.jpg"
+              alt="Glow Beauty nail art by Paige"
+              className="w-full h-[420px] md:h-[520px] object-cover border border-olive/15"
+            />
+            <div className="absolute bottom-4 left-4 right-4 bg-cream/90 backdrop-blur-sm px-5 py-4 border border-olive/15">
+              <p className="section-tag mb-1">✦ Intricate Hand-Drawn Art</p>
+              <p className="font-heading text-lg text-charcoal font-light">Long Lasting Gel · Add On</p>
+            </div>
+          </motion.div>
+
+          {/* Testimonial cards */}
+          <div className="flex flex-col gap-6">
+            {testimonials.map((t, i) => (
               <motion.div
-                className="group p-7 rounded-2xl border border-white/8 bg-dark-700/60 backdrop-blur-sm hover:border-brand-500/30 transition-all duration-300 h-full flex flex-col"
-                whileHover={{ y: -5, scale: 1.01 }}
-                transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+                key={t.name}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="bg-cream border border-olive/15 p-8"
               >
-                <Stars count={t.stars} />
-
-                <blockquote className="mt-4 text-slate-300 text-base leading-relaxed flex-1">
-                  "{t.quote}"
-                </blockquote>
-
-                <div className="mt-6 flex items-center gap-3 pt-5 border-t border-white/8">
-                  <div
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold`}
-                  >
-                    {t.avatar}
-                  </div>
+                <span className="font-heading text-4xl text-olive/30 leading-none block mb-3">&ldquo;</span>
+                <p className="font-heading text-xl font-light text-charcoal italic leading-relaxed mb-5">
+                  {t.quote}
+                </p>
+                <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-white font-semibold text-sm">{t.name}</div>
-                    <div className="text-slate-500 text-xs">{t.role}</div>
+                    <p className="font-body text-xs tracking-widest uppercase text-charcoal font-semibold">{t.name}</p>
+                    <p className="text-charcoal/40 text-xs mt-0.5">{t.service}</p>
                   </div>
+                  <span className="text-olive text-lg">✦</span>
                 </div>
               </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        {/* Trust strip */}
-        <FadeUp delay={0.2} className="mt-16">
-          <div className="flex flex-wrap justify-center gap-8 items-center text-slate-600 text-sm">
-            {['⭐ 5-star rated', '🇿🇦 South Africa based', '📞 Direct WhatsApp support', '🔒 Secure & fast hosting'].map(
-              (item, i) => (
-                <motion.span
-                  key={i}
-                  whileHover={{ color: '#818cf8', y: -2 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                  className="cursor-default"
-                >
-                  {item}
-                </motion.span>
-              )
-            )}
+            ))}
           </div>
-        </FadeUp>
+        </div>
       </div>
     </section>
   )

@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
 import About from './sections/About'
+import Testimonials from './sections/Testimonials'
 import Services from './sections/Services'
 import BookNow from './sections/BookNow'
 import Location from './sections/Location'
@@ -12,6 +13,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Testimonials />
       <Services />
       <BookNow />
       <Location />
