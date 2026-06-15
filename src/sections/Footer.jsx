@@ -1,36 +1,28 @@
 export default function Footer() {
   return (
-    <footer
-      className="py-14 px-6 text-center"
-      style={{ backgroundColor: '#2C2C2C' }}
-    >
-      <p
-        className="font-heading text-2xl text-white mb-4"
-        style={{ letterSpacing: '0.2em' }}
-      >
-        GLOW BEAUTY
-      </p>
-      <div className="w-8 h-px mx-auto mb-6" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
-      <p className="font-body text-xs text-white opacity-50 mb-1 tracking-wide">
-        13 6th Avenue, Melkbosstrand
-      </p>
-      <a
-        href="tel:+27836601386"
-        className="font-body text-xs text-white opacity-50 hover:opacity-80 transition-opacity tracking-wide block mb-1"
-      >
-        083 660 1386
-      </a>
-      <a
-        href="https://instagram.com/glowbeauty_melkbosstrand"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-body text-xs text-white opacity-50 hover:opacity-80 transition-opacity tracking-wide"
-      >
-        @glowbeauty_melkbosstrand
-      </a>
-      <p className="font-body text-xs text-white opacity-25 mt-8 tracking-wide">
-        © {new Date().getFullYear()} Glow Beauty by Paige Clemen. All rights reserved.
-      </p>
+    <footer className="bg-charcoal text-cream/60 py-12 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-cream/10 pb-10 mb-8">
+          <div>
+            <p className="font-heading text-2xl text-cream tracking-[0.15em] font-light mb-1">GLOW BEAUTY</p>
+            <p className="text-xs text-cream/40">By Paige Clemen · Melkbosstrand</p>
+          </div>
+          <div className="flex gap-6">
+            <a href="#about" className="text-xs tracking-widest uppercase hover:text-cream transition-colors">About</a>
+            <a href="#services" className="text-xs tracking-widest uppercase hover:text-cream transition-colors">Services</a>
+            <a href="#book" className="text-xs tracking-widest uppercase hover:text-cream transition-colors">Book</a>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+          <p>© 2025 Glow Beauty by Paige Clemen. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="https://instagram.com/glowbeauty_melkbosstrand" target="_blank" rel="noopener noreferrer" className="hover:text-cream transition-colors">
+              @glowbeauty_melkbosstrand
+            </a>
+            <span>13 6th Avenue, Melkbosstrand</span>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }

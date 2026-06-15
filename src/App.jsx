@@ -1,4 +1,3 @@
-import './index.css'
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -7,18 +6,18 @@ import BookNow from './sections/BookNow'
 import Location from './sections/Location'
 import Footer from './sections/Footer'
 
-export default function App() {
+function App() {
   return (
-    <>
+    <div className="min-h-screen">
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <BookNow />
-        <Location />
-      </main>
+      <Hero />
+      <About />
+      <Services />
+      <BookNow />
+      <Location />
       <Footer />
-    </>
+    </div>
   )
 }
+
+export default App

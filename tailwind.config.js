@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         cream: '#F9F6F2',
-        'sage-light': '#F0EDE6',
         olive: '#6B7040',
         charcoal: '#2C2C2C',
+        'sage-light': '#F0EDE6',
+        'olive-dark': '#4E5230',
       },
       fontFamily: {
         heading: ['"Cormorant Garamond"', 'serif'],
         body: ['Raleway', 'sans-serif'],
       },
       letterSpacing: {
-        widest2: '0.2em',
-        widest3: '0.3em',
+        widest: '0.25em',
       },
     },
   },

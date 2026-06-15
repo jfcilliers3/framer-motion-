@@ -5,17 +5,16 @@
 @tailwind utilities;
 
 :root {
-  --cream: #F9F6F2;
-  --sage-light: #F0EDE6;
-  --olive: #6B7040;
-  --charcoal: #2C2C2C;
-  --white: #FFFFFF;
+  --color-cream: #F9F6F2;
+  --color-olive: #6B7040;
+  --color-charcoal: #2C2C2C;
+  --color-sage-light: #F0EDE6;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -23,13 +22,44 @@ html {
 }
 
 body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
   font-family: 'Raleway', sans-serif;
-  background-color: var(--cream);
-  color: var(--charcoal);
   font-weight: 400;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cormorant Garamond', serif;
+}
+
+@layer components {
+  .section-tag {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-olive);
+    font-weight: 500;
+  }
+
+  .thin-line {
+    width: 60px;
+    height: 1px;
+    background: var(--color-olive);
+    opacity: 0.5;
+    margin: 1rem auto;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-olive);
+  opacity: 0.5;
 }

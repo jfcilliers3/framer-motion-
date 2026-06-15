@@ -3,59 +3,45 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   return (
     <section
-      id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-6"
       style={{
-        background: 'linear-gradient(160deg, #F9F6F2 0%, #F0EDE6 50%, #EBE6DC 100%)',
+        background: 'radial-gradient(ellipse at 60% 30%, #e8e4d9 0%, #F9F6F2 50%, #f0ede6 100%)',
       }}
     >
-      {/* Decorative SVG botanical lines */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
-        viewBox="0 0 800 800"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <circle cx="400" cy="400" r="350" fill="none" stroke="#6B7040" strokeWidth="0.5" />
-        <circle cx="400" cy="400" r="280" fill="none" stroke="#6B7040" strokeWidth="0.5" />
-        <circle cx="400" cy="400" r="200" fill="none" stroke="#6B7040" strokeWidth="0.5" />
-        <line x1="400" y1="50" x2="400" y2="750" stroke="#6B7040" strokeWidth="0.3" />
-        <line x1="50" y1="400" x2="750" y2="400" stroke="#6B7040" strokeWidth="0.3" />
-        <line x1="153" y1="153" x2="647" y2="647" stroke="#6B7040" strokeWidth="0.3" />
-        <line x1="647" y1="153" x2="153" y2="647" stroke="#6B7040" strokeWidth="0.3" />
+      {/* Decorative SVG botanical */}
+      <svg className="absolute top-20 right-10 opacity-10 w-48 md:w-64" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 300 C100 300 20 200 20 100 C20 0 100 20 100 20 C100 20 180 0 180 100 C180 200 100 300 100 300Z" fill="#6B7040"/>
+        <path d="M100 250 C100 250 40 170 40 90 C40 40 100 50 100 50" stroke="#6B7040" strokeWidth="1" fill="none"/>
+        <path d="M100 250 C100 250 160 170 160 90 C160 40 100 50 100 50" stroke="#6B7040" strokeWidth="1" fill="none"/>
+      </svg>
+      <svg className="absolute bottom-20 left-10 opacity-10 w-32 md:w-48 rotate-180" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 300 C100 300 20 200 20 100 C20 0 100 20 100 20 C100 20 180 0 180 100 C180 200 100 300 100 300Z" fill="#6B7040"/>
       </svg>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: 'easeOut' }}
-        className="relative z-10 max-w-3xl mx-auto"
+        className="max-w-3xl mx-auto"
       >
-        <p className="font-body text-xs tracking-widest3 uppercase text-olive mb-8">
-          ✦ &nbsp; Melkbosstrand, South Africa &nbsp; ✦
-        </p>
-        <h1 className="font-heading text-5xl md:text-7xl font-light text-charcoal leading-tight mb-6">
-          Where Beauty<br />Meets Intention
+        <p className="section-tag mb-6">✦ Melkbosstrand · Est. 2024 ✦</p>
+        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light text-charcoal leading-tight mb-6">
+          Where Beauty<br /><em>Meets Intention</em>
         </h1>
-        <div
-          className="w-16 h-px mx-auto mb-6"
-          style={{ backgroundColor: '#6B7040' }}
-        />
-        <p className="font-body text-sm tracking-widest2 uppercase text-charcoal opacity-70 mb-12">
-          Skin &nbsp;·&nbsp; Nails &nbsp;·&nbsp; Wax &nbsp;·&nbsp; Tints
+        <div className="thin-line !mx-auto mb-6"></div>
+        <p className="font-body text-sm tracking-widest text-charcoal/60 uppercase mb-10">
+          Skin · Nails · Wax · Tints
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/27836601386"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-body text-xs tracking-widest2 uppercase px-10 py-4 bg-olive text-white hover:bg-charcoal transition-colors"
+            href="https://wa.me/27000000000"
+            className="bg-olive text-cream font-body text-xs tracking-widest uppercase px-10 py-4 hover:bg-olive-dark transition-colors duration-300"
           >
             Book Now
           </a>
           <a
             href="#services"
-            className="font-body text-xs tracking-widest2 uppercase px-10 py-4 border border-charcoal text-charcoal hover:border-olive hover:text-olive transition-colors"
+            className="border border-charcoal/30 text-charcoal font-body text-xs tracking-widest uppercase px-10 py-4 hover:border-olive hover:text-olive transition-colors duration-300"
           >
             View Services
           </a>
@@ -64,14 +50,17 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
+        className="absolute bottom-10 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <div
-          className="w-px h-12 opacity-30"
-          style={{ backgroundColor: '#6B7040' }}
+        <span className="section-tag">Scroll</span>
+        <motion.div
+          className="w-px h-12 bg-olive/40"
+          animate={{ scaleY: [0, 1, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          style={{ transformOrigin: 'top' }}
         />
       </motion.div>
     </section>
