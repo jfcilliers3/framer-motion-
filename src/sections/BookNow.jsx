@@ -20,7 +20,7 @@ export default function BookNow() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/27000000000"
+            href="https://wa.me/27836601386"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-cream text-olive font-body text-xs tracking-widest uppercase px-10 py-4 hover:bg-sage-light transition-colors duration-300"
