@@ -62,7 +62,7 @@ export default function Location() {
             <div>
               <p className="section-tag mb-3">Contact</p>
               <a
-                href="https://wa.me/27000000000"
+                href="https://wa.me/27836601386"
                 className="text-sm text-olive hover:text-olive-dark transition-colors"
               >
                 WhatsApp Us →
